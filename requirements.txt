@@ -1,6 +1,10 @@
 numpy
 pandas
 seaborn
--e .
+scikit-learn
+#-e .
 ipykernel
 matplotlib
+catboost
+xgboost
+
