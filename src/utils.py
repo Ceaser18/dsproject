@@ -54,9 +54,9 @@ def evaluate_models(X_train, y_train,X_test,y_test,models,param):
         raise CustomException(e, sys)
     
 def load_object(file_path):
-    try:
-        with open(file_path, "rb") as file_obj:
-            return pickle.load(file_obj)
-
-    except Exception as e:
-        raise CustomException(e, sys)
+    absolute_path = os.path.abspath(file_path)
+    print(f"Looking for model at: {absolute_path}")  # Debugging output
+    if not os.path.exists(absolute_path):
+        raise FileNotFoundError(f"Model file not found at: {absolute_path}")
+    with open(absolute_path, "rb") as file_obj:
+        return pickle.load(file_obj)
